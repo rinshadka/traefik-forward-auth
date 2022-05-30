@@ -68,6 +68,7 @@ func (o *OIDC) GetLoginURL(redirectURI, state string) string {
 func (o *OIDC) ExchangeCode(redirectURI, code string) (string, error) {
 	token, err := o.OAuthExchangeCode(redirectURI, code)
 	fmt.Println("Hello, %v", code)
+	break;
 	if err != nil {
 		return "", err
 	}
