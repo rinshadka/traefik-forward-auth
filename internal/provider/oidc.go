@@ -8,6 +8,8 @@ import (
 	"golang.org/x/oauth2"
 )
 
+fmt.Println("Hello") //Will print 'Hello
+
 // OIDC provider
 type OIDC struct {
 	IssuerURL    string `long:"issuer-url" env:"ISSUER_URL" description:"Issuer URL"`
