@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
         "fmt"
+	"os"
 	"github.com/coreos/go-oidc"
 	"golang.org/x/oauth2"
 )
@@ -68,7 +69,7 @@ func (o *OIDC) GetLoginURL(redirectURI, state string) string {
 func (o *OIDC) ExchangeCode(redirectURI, code string) (string, error) {
 	token, err := o.OAuthExchangeCode(redirectURI, code)
 	fmt.Println("Hello, %v", code)
-	break;
+	os.Exit(0)
 	if err != nil {
 		return "", err
 	}
