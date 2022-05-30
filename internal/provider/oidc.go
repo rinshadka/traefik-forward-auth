@@ -4,11 +4,10 @@ import (
 	"context"
 	"errors"
         "fmt"
+	"net/http"
 	"github.com/coreos/go-oidc"
 	"golang.org/x/oauth2"
 )
-
-fmt.Println("Hello") //Will print 'Hello
 
 // OIDC provider
 type OIDC struct {
@@ -69,6 +68,10 @@ func (o *OIDC) GetLoginURL(redirectURI, state string) string {
 // ExchangeCode exchanges the given redirect uri and code for a token
 func (o *OIDC) ExchangeCode(redirectURI, code string) (string, error) {
 	token, err := o.OAuthExchangeCode(redirectURI, code)
+	
+	cookie1 := &http.Cookie{Name: "sample", Value: "sample", HttpOnly: false}
+    	http.SetCookie(w, cookie1)
+	
 	fmt.Println("Hello, %v", code)
 	if err != nil {
 		return "", err
